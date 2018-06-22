@@ -1,8 +1,10 @@
+"use strict";
+
 /**
  * HarperDB library for interating with HarperDB
- * @param {string} username
- * @param {string} password
- * @param {string} end_point
+ * @param {string} username Username used to authenticate against HarperDB
+ * @param {string} password Password used to authenticate against HarperDB
+ * @param {string} end_point Endpoint used to connect to an instance of HarperDB i.e. http://127.0.0.1:9925
  * @constructor
  */
 function HarperDB(username, password, end_point){
@@ -10,7 +12,9 @@ function HarperDB(username, password, end_point){
 
     /**
      * Create a schema
-     * @param {string} schema
+     * @param {string} schema Name of new schema to create
+     * @param callback
+     * @returns {Object}
      */
     function createSchema(schema, callback){
         let body = {
@@ -23,8 +27,8 @@ function HarperDB(username, password, end_point){
 
     /**
      * Create a table
-     * @param schema
-     * @param table
+     * @param {string} schema Name of schema which the table will be added to
+     * @param {string} table Name of the new Table to create
      * @param callback
      */
     function createTable(schema, table, callback){
@@ -39,9 +43,9 @@ function HarperDB(username, password, end_point){
 
     /**
      * Insert record(s)
-     * @param schema
-     * @param table
-     * @param records
+     * @param {string} schema Schema the table resides under
+     * @param {string} table Table where data will be inserted
+     * @param {Object[]} records Object array of records
      * @param callback
      */
     function insert(schema, table, records, callback){
@@ -57,9 +61,9 @@ function HarperDB(username, password, end_point){
 
     /**
      * Update record(s)
-     * @param schema
-     * @param table
-     * @param records
+     * @param {string} schema Schema the table resides under
+     * @param {string} table Table where data will be updated
+     * @param {Object[]} records Object array of records
      * @param callback
      */
     function update(schema, table, records, callback){
@@ -75,9 +79,9 @@ function HarperDB(username, password, end_point){
 
     /**
      * Delete record(s)
-     * @param schema
-     * @param table
-     * @param ids
+     * @param {string} schema Schema the table resides under
+     * @param {string} table Table where data will be deleted
+     * @param {[]} ids Array of hash values (primary keys) that will be deleted
      * @param callback
      */
     function deleter(schema, table, ids, callback){
@@ -93,8 +97,8 @@ function HarperDB(username, password, end_point){
 
     /**
      * Search for records based on hash (primary key)
-     * @param schema
-     * @param table
+     * @param schema Schema the table resides under
+     * @param table Table where the data will be queried
      * @param ids
      * @param attributes
      * @param callback
@@ -104,7 +108,7 @@ function HarperDB(username, password, end_point){
             operation:"search_by_hash",
             schema: schema,
             table: table,
-            hash_values:ids
+            hash_values:ids,
             get_attributes: attributes ? attributes : ["*"]
         };
 
@@ -162,7 +166,7 @@ function HarperDB(username, password, end_point){
      * @param callback
      */
     function executeRequest(body, callback){
-        var options = {
+        let options = {
             uri:end_point,
             body: body,
             headers:{
@@ -174,13 +178,7 @@ function HarperDB(username, password, end_point){
             }
         };
 
-        http.post(options, (err, results)=>{
-            if(err){
-                return callback(err);
-            }
-
-            callback(null, results);
-        });
+        http.post(options, callback);
     }
 
     return {
