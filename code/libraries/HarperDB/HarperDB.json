@@ -3,6 +3,6 @@
     "dependencies": "http",
     "description": "",
     "name": "HarperDB",
-    "version": null,
+    "version": 2,
     "visibility": "system"
 }

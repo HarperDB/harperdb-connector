@@ -8,7 +8,7 @@
  * @constructor
  */
 function HarperDB(username, password, end_point){
-    let http = Requests();
+    const http = Requests();
 
     /**
      * Create a schema
@@ -17,7 +17,7 @@ function HarperDB(username, password, end_point){
      * @returns {Object}
      */
     function createSchema(schema, callback){
-        let body = {
+        const body = {
             operation:"create_schema",
             schema: schema
         };
@@ -32,7 +32,7 @@ function HarperDB(username, password, end_point){
      * @param callback
      */
     function createTable(schema, table, callback){
-        let body = {
+        const body = {
             operation:"create_table",
             schema: schema,
             table: table
@@ -49,7 +49,7 @@ function HarperDB(username, password, end_point){
      * @param callback
      */
     function insert(schema, table, records, callback){
-        let body = {
+        const body = {
             operation:"insert",
             schema: schema,
             table: table,
@@ -67,7 +67,7 @@ function HarperDB(username, password, end_point){
      * @param callback
      */
     function update(schema, table, records, callback){
-        let body = {
+        const body = {
             operation:"update",
             schema: schema,
             table: table,
@@ -85,7 +85,7 @@ function HarperDB(username, password, end_point){
      * @param callback
      */
     function deleter(schema, table, ids, callback){
-        let body = {
+        const body = {
             operation:"delete",
             schema: schema,
             table: table,
@@ -104,7 +104,7 @@ function HarperDB(username, password, end_point){
      * @param callback
      */
     function searchByHash(schema, table, ids, attributes, callback){
-        let body = {
+        const body = {
             operation:"search_by_hash",
             schema: schema,
             table: table,
@@ -125,7 +125,7 @@ function HarperDB(username, password, end_point){
      * @param callback
      */
     function searchByValue(schema, table, search_attribute, search_value, attributes, callback){
-        let body = {
+        const body = {
             operation:"search_by_value",
             schema: schema,
             table: table,
@@ -143,7 +143,7 @@ function HarperDB(username, password, end_point){
      * @param callback
      */
     function sql(sql, callback){
-        let body = {
+        const body = {
             operation:"sql",
             sql: sql
         };
@@ -166,7 +166,7 @@ function HarperDB(username, password, end_point){
      * @param callback
      */
     function executeRequest(body, callback){
-        let options = {
+        const options = {
             uri:end_point,
             body: body,
             headers:{
