@@ -27,7 +27,5 @@
   "homepage": "http://harperdb.io",
   "name": "harperdb-connector",
   "version": "0.0.1",
-  "dependencies": {
-    "harperdb-connect": "^1.2.0"
-  }
+  "dependencies": {}
 }

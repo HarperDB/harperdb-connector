@@ -1,5 +1,3 @@
-const { HarperDBConnect } = require('./harperdb-connect');
-
 /**
  * HarperDB library for interating with HarperDB
  * @param {string} username
