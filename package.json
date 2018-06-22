@@ -1,5 +1,5 @@
 {
-  "asset_types": [],
+  "asset_types": ["Code Libraries"],
   "license": "MIT",
   "prog_lang": [
     "javascript"
