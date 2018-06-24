@@ -1,0 +1,15 @@
+{
+    "auto_restart": false,
+    "concurrency": 0,
+    "current_version": 9,
+    "dependencies": "log,HarperDBInitialization",
+    "execution_timeout": 0,
+    "logging_enabled": "false",
+    "name": "HarperDBCreateSchema",
+    "params": [
+        "{}"
+    ],
+    "permissions": {},
+    "run_user": "",
+    "source": "HarperDBCreateSchema.js"
+}

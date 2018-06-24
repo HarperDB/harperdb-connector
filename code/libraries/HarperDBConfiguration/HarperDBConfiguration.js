@@ -1,4 +1,5 @@
 const HarperDBConfiguration = {
-  key1: "value1",
-  key2: "value2"
+    end_point: "http://127.0.0.1:9925",
+    username: "HDB_ADMIN",
+    password: "H4rp3rDB!"
 };

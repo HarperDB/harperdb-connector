@@ -97,19 +97,19 @@ function HarperDB(username, password, end_point){
 
     /**
      * Search for records based on hash (primary key)
-     * @param schema Schema the table resides under
-     * @param table Table where the data will be queried
-     * @param ids
-     * @param attributes
+     * @param {string} schema Schema the table resides under
+     * @param {string} table Table where the data will be queried
+     * @param {[]} ids Array of hash values (primary key values) that will be deleted
+     * @param {[]} get_attributes (optional) String array of attribute names that will be returned in the results
      * @param callback
      */
-    function searchByHash(schema, table, ids, attributes, callback){
+    function searchByHash(schema, table, ids, get_attributes, callback){
         const body = {
             operation:"search_by_hash",
             schema: schema,
             table: table,
             hash_values:ids,
-            get_attributes: attributes ? attributes : ["*"]
+            get_attributes: get_attributes ? get_attributes : ["*"]
         };
 
         executeRequest(body, callback);
@@ -117,21 +117,21 @@ function HarperDB(username, password, end_point){
 
     /**
      * Search by value on an attribute
-     * @param schema
-     * @param table
-     * @param search_attribute
-     * @param search_value
-     * @param attributes
+     * @param {string} schema Schema the table resides under
+     * @param {string} table Table where the data will be queried
+     * @param {string} search_attribute Attribute upon which to perform the search
+     * @param {string} search_value Value that will be used in the search
+     * @param {[]} get_attributes (optional) String array of attribute names that will be returned in the results
      * @param callback
      */
-    function searchByValue(schema, table, search_attribute, search_value, attributes, callback){
+    function searchByValue(schema, table, search_attribute, search_value, get_attributes, callback){
         const body = {
             operation:"search_by_value",
             schema: schema,
             table: table,
             search_attribute: search_attribute,
             search_value: search_value,
-            get_attributes: attributes ? attributes : ["*"]
+            get_attributes: get_attributes ? get_attributes : ["*"]
         };
 
         executeRequest(body, callback);
@@ -139,7 +139,7 @@ function HarperDB(username, password, end_point){
 
     /**
      * Run SQL (INSERT / UPDATE / DELETE / SELECT)
-     * @param sql
+     * @param {string} sql SQL Statement to execute
      * @param callback
      */
     function sql(sql, callback){
@@ -152,8 +152,33 @@ function HarperDB(username, password, end_point){
     }
 
     /**
+     * Returns the schema/table/attribute meta data for all schemas
+     * @param callback
+     */
+    function describeAll(callback){
+        const body = {
+            operation:"describe_all"
+        };
+
+        executeRequest(body, callback);
+    }
+
+    /**
+     * Returns the schema/table/attribute meta data for a schema
+     * @param callback
+     */
+    function describeSchema(schema, callback){
+        const body = {
+            operation:"describe_all",
+            schema:schema
+        };
+
+        executeRequest(body, callback);
+    }
+
+    /**
      * Execute a raw HarperDB call
-     * @param json
+     * @param {Object}json
      * @param callback
      */
     function executeOperation(json, callback){
@@ -162,7 +187,7 @@ function HarperDB(username, password, end_point){
 
     /**
      * Perform the request to HarperDB
-     * @param body
+     * @param {Object} body
      * @param callback
      */
     function executeRequest(body, callback){
@@ -190,6 +215,8 @@ function HarperDB(username, password, end_point){
         searchByHash,
         searchByValue,
         sql,
-        executeOperation
+        executeOperation,
+        describeAll,
+        describeSchema
     };
 }
