@@ -1,15 +1,15 @@
 /**
  * Returns an object array based on a search by hash (primary key)
- * @param {string} body
+ * @param {Object} body
  * @example
  *
- * req.params.body = [{
+ * req.params.body = {
  *      "schema":"dev",
  *      "table":"dog",
  *      "search_attribute":"dog_name",
  *      "search_value":"Kyle",
  *      "attributes":["*"]
- *  }];
+ *  };
  */
 function HarperDBSearchByValue(req, resp) {
     const harperdb = HarperDBInitialization();

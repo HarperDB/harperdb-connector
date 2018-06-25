@@ -1,12 +1,12 @@
 /**
  * Creates a new table in an existing schema in HarperDB
- * @param {string} body
+ * @param {Object} body
  * @example
  *
- * req.params.body = [{
+ * req.params.body = {
  *      "schema":"dev",
  *      "table":"dog"
- *  }];
+ *  };
  */
 function HarperDBCreateTable(req, resp) {
     const harperdb = HarperDBInitialization();

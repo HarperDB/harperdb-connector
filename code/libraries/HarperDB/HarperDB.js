@@ -177,8 +177,47 @@ function HarperDB(username, password, end_point){
     }
 
     /**
+     * loads csv data into a table
+     * @param {string} schema Schema the table resides under
+     * @param {string} table Table the csv data is loading into
+     * @param {string} data CSV formatted
+     * @param callback
+     */
+    function csvDataLoad(schema, table, data, callback){
+        const body = {
+            operation:"csv_data_load",
+            schema:schema,
+            table:table,
+            data:data
+        };
+
+        executeRequest(body, callback);
+    }
+
+    /**
      * Execute a raw HarperDB call
      * @param {Object}json
+     * @example
+     * {
+        "operation":"insert",
+        "schema":"dev",
+        "table":"dog",
+        "records": [
+          {
+            "name":"Harper",
+            "breed":"Mutt",
+            "id":"1",
+            "age":5
+
+          },
+          {
+            "name":"Penny",
+            "breed":"Mutt",
+            "id":"3",
+            "age":5
+          }
+        ]
+        }
      * @param callback
      */
     function executeOperation(json, callback){
@@ -217,6 +256,7 @@ function HarperDB(username, password, end_point){
         sql,
         executeOperation,
         describeAll,
-        describeSchema
+        describeSchema,
+        csvDataLoad
     };
 }

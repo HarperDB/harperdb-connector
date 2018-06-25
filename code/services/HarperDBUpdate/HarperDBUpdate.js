@@ -1,9 +1,9 @@
 /**
  * Updates JSON data in an existing schema in HarperDB
- * @param {string} body
+ * @param {Object} body
  * @example
  *
- * req.params.body = [{
+ * req.params.body = {
  *      "schema":"dev",
  *      "table":"dog",
  *      "records":[
@@ -13,7 +13,7 @@
         "age":6
       }
  *      ]
- *  }];
+ *  };
  */
 function HarperDBUpdate(req, resp) {
     const harperdb = HarperDBInitialization();

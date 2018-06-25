@@ -1,5 +1,11 @@
 /**
  * Updates JSON data in an existing schema in HarperDB
+ * * @param {Object} body
+ * @example
+ *
+ * req.params.body = {
+ *      "schema":"dev"
+ *  };
  */
 function HarperDBDescribeSchema(req, resp) {
     const harperdb = HarperDBInitialization();

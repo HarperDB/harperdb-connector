@@ -1,11 +1,11 @@
 /**
  * Creates a new schema in HarperDB
- * @param {string} body
+ * @param {Object} body
  * @example
  *
- * req.params.body = [{
+ * req.params.body = {
  *      "schema":"dev"
- *  }];
+ *  };
  */
 function CreateSchema(req, resp) {
     const harperdb = HarperDBInitialization();

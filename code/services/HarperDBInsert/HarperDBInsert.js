@@ -1,9 +1,9 @@
 /**
  * Inserts JSON data into an existing schema in HarperDB
- * @param {string} body
+ * @param {Object} body
  * @example
  *
- * req.params.body = [{
+ * req.params.body = {
  *      "schema":"dev",
  *      "table":"dog",
  *      "records":[
@@ -98,7 +98,7 @@
         "adorable":false
       }
  *      ]
- *  }];
+ *  };
  */
 function HarperDBInsert(req, resp) {
     const harperdb = HarperDBInitialization();

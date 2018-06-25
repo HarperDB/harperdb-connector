@@ -1,13 +1,13 @@
 /**
  * Deletes data by hash (primary key) in HarperDB
- * @param {string} body
+ * @param {Object} body
  * @example
  *
- * req.params.body = [{
+ * req.params.body = {
  *      "schema":"dev",
  *      "table":"dog",
  *      "hash_values":[ 5,8]
- *  }];
+ *  };
  */
 function HarperDBDelete(req, resp) {
     const harperdb = HarperDBInitialization();

@@ -1,6 +1,6 @@
 /**
  * Initializes the HarperDB Connector with end_point, username & password.  Returns the accessor functions to interact with HarperDB
- * @returns {{createSchema, createTable, insert, update, delete, searchByHash, searchByValue, sql, executeOperation, describeAll, describeSchema}}
+ * @returns {{createSchema, createTable, insert, update, delete, searchByHash, searchByValue, sql, executeOperation, describeAll, describeSchema, csvDataLoad}}
  * @constructor
  */
 function HarperDBInitialization(){
