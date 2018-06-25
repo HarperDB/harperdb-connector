@@ -9,6 +9,29 @@
  *      "hash_values":[1,3],
  *      "attributes":["*"]
  *  };
+ *
+ *  @returns {Object[]}
+ *  @example
+ *  [
+ *      {
+        "id" : 1,
+        "dog_name" : "Penny",
+        "owner_name": "Kyle",
+        "breed_id":154,
+        "age":5,
+        "weight_lbs":35,
+        "adorable":true
+      },
+ {
+     "id" : 3,
+     "dog_name" : "Alby",
+     "owner_name": "Kaylan",
+     "breed_id":348,
+     "age":5,
+     "weight_lbs":84,
+     "adorable":true
+   }
+ *  ]
  */
 function HarperDBSearchByHash(req, resp) {
     const harperdb = HarperDBInitialization();

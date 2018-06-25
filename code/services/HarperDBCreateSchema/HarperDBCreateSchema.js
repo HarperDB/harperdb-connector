@@ -6,6 +6,12 @@
  * req.params.body = {
  *      "schema":"dev"
  *  };
+ *
+ *  @returns {Object}
+ *  {
+    "message": "schema dev successfully created"
+    }
+ *
  */
 function CreateSchema(req, resp) {
     const harperdb = HarperDBInitialization();

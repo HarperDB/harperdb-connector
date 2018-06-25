@@ -7,6 +7,12 @@
  *      "schema":"dev",
  *      "table":"dog"
  *  };
+ *
+ *  @returns {Object}
+ *  @example
+ *  {
+*  "message": "table dev.dog successfully created."
+*  }
  */
 function HarperDBCreateTable(req, resp) {
     const harperdb = HarperDBInitialization();

@@ -14,6 +14,16 @@
       }
  *      ]
  *  };
+ *
+ *  @returns {Object}
+ *  @example
+ *  {
+  "message": "updated 1 of 1 records",
+  "update_hashes": [
+    1
+  ],
+  "skipped_hashes": []
+}
  */
 function HarperDBUpdate(req, resp) {
     const harperdb = HarperDBInitialization();

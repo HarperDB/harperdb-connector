@@ -7,9 +7,23 @@
  *      "schema":"dev",
  *      "table":"dog",
  *      "search_attribute":"dog_name",
- *      "search_value":"Kyle",
+ *      "search_value":"Penny",
  *      "attributes":["*"]
  *  };
+ *
+ *  @returns {Object[]}
+ *  @example
+ *  [
+ *      {
+        "id" : 1,
+        "dog_name" : "Penny",
+        "owner_name": "Kyle",
+        "breed_id":154,
+        "age":5,
+        "weight_lbs":35,
+        "adorable":true
+      }
+ *  ]
  */
 function HarperDBSearchByValue(req, resp) {
     const harperdb = HarperDBInitialization();

@@ -99,6 +99,16 @@
       }
  *      ]
  *  };
+ *
+ *  @returns {Object}
+ *  @example
+ *  {
+  "message": "inserted 10 of 10 records",
+  "update_hashes": [
+    1,2,3,4,5,6,7,8,9,10
+  ],
+  "skipped_hashes": []
+}
  */
 function HarperDBInsert(req, resp) {
     const harperdb = HarperDBInitialization();

@@ -18,6 +18,8 @@
  *  req.params.body = {
  *      "sql":"DELETE FROM dev.dog WHERE id = 22"
  *  };
+ *
+ *  @returns {Object | Object[]}
  */
 function HarperDBSQL(req, resp) {
     const harperdb = HarperDBInitialization();
