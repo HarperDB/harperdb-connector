@@ -1,21 +1,15 @@
 /**
  * Creates a new schema in HarperDB
- * @param {Object} body
- * @example
- *
- * req.params.body = {
- *      "schema":"dev"
- *  };
- *
+ * @param {string} schema Name of schema to create
  *  @returns {Object}
  *  {
     "message": "schema dev successfully created"
     }
  *
  */
-function CreateSchema(req, resp) {
-    const harperdb = HarperDBInitialization();
-    harperdb.createSchema(req.params.body.schema, (err, results)=>{
+function HarperDBCreateSchema(req, resp) {
+    var harperdb = HarperDB();
+    harperdb.createSchema(req.params.schema, function(err, results){
         if(err){
             return resp.error(err);
         }

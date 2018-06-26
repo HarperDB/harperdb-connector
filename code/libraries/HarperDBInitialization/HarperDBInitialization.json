@@ -1,8 +1,0 @@
-{
-  "api": "",
-  "dependencies": "HarperDB,HarperDBConfiguration",
-  "description": "",
-  "name": "HarperDBInitialization",
-  "version": null,
-  "visibility": "system"
-}

@@ -2,12 +2,16 @@
     "auto_restart": false,
     "concurrency": 0,
     "current_version": 1,
-    "dependencies": "log,HarperDBInitialization",
+    "dependencies": "log,HarperDB",
     "execution_timeout": 0,
     "logging_enabled": "false",
     "name": "HarperDBSearchByValue",
     "params": [
-        "{}"
+        "schema",
+        "table",
+        "search_attribute",
+        "search_value",
+        "attributes"
     ],
     "permissions": {},
     "run_user": "",

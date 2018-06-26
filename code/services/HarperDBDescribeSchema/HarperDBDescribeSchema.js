@@ -71,8 +71,8 @@
  ]
  */
 function HarperDBDescribeSchema(req, resp) {
-    const harperdb = HarperDBInitialization();
-    harperdb.describeSchema((err, results)=>{
+    const harperdb = HarperDB();
+    harperdb.describeSchema(req.params.schema, function(err, results){
         if(err){
             return resp.error(err);
         }

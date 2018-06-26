@@ -111,8 +111,8 @@
 }
  */
 function HarperDBInsert(req, resp) {
-    const harperdb = HarperDBInitialization();
-    harperdb.insert(req.params.body.schema, req.params.body.table, req.params.records, (err, results)=>{
+    const harperdb = HarperDB();
+    harperdb.insert(req.params.schema, req.params.table, req.params.records, function(err, results){
         if(err){
             return resp.error(err);
         }

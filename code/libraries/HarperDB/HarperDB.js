@@ -1,14 +1,9 @@
-"use strict";
-
 /**
- * HarperDB library for interating with HarperDB
- * @param {string} username Username used to authenticate against HarperDB
- * @param {string} password Password used to authenticate against HarperDB
- * @param {string} end_point Endpoint used to connect to an instance of HarperDB i.e. http://127.0.0.1:9925
+ * Library for interating with HarperDB
  * @constructor
  */
-function HarperDB(username, password, end_point){
-    const http = Requests();
+function HarperDB(){
+    var http = Requests();
 
     /**
      * Create a schema
@@ -33,6 +28,7 @@ function HarperDB(username, password, end_point){
      * Create a table
      * @param {string} schema Name of schema which the table will be added to
      * @param {string} table Name of the new Table to create
+     * @param {string} hash_attribute Name of the hash attribute (primary key) that will be the unique identifier for each row
      * @param callback
      * @returns {Object}
      * @example
@@ -40,11 +36,12 @@ function HarperDB(username, password, end_point){
      *  "message": "table dev.dog successfully created."
      *  }
      */
-    function createTable(schema, table, callback){
+    function createTable(schema, table, hash_attribute, callback){
         const body = {
             operation:"create_table",
             schema: schema,
-            table: table
+            table: table,
+            hash_attribute:hash_attribute
         };
 
         executeRequest(body, callback);
@@ -409,7 +406,7 @@ function HarperDB(username, password, end_point){
      */
     function describeSchema(schema, callback){
         const body = {
-            operation:"describe_all",
+            operation:"describe_schema",
             schema:schema
         };
 
@@ -479,15 +476,15 @@ function HarperDB(username, password, end_point){
      *
      */
     function executeRequest(body, callback){
-        const options = {
-            uri:end_point,
+        var options = {
+            uri: HarperDBConfiguration.end_point,
             body: body,
             headers:{
                 "Content-Type": "application/json"
             },
             auth:{
-                user:username,
-                pass: password
+                user: HarperDBConfiguration.username,
+                pass: HarperDBConfiguration.password
             }
         };
 

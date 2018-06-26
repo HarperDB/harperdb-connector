@@ -22,8 +22,8 @@
  *  @returns {Object | Object[]}
  */
 function HarperDBSQL(req, resp) {
-    const harperdb = HarperDBInitialization();
-    harperdb.sql(req.params.body.sql, (err, results)=>{
+    const harperdb = HarperDB();
+    harperdb.sql(req.params.sql, function(err, results){
         if(err){
             return resp.error(err);
         }

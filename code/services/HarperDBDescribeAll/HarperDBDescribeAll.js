@@ -65,8 +65,8 @@
  ]
  */
 function HarperDBDescribeAll(req, resp) {
-    const harperdb = HarperDBInitialization();
-    harperdb.describeAll((err, results)=>{
+    const harperdb = HarperDB();
+    harperdb.describeAll(function(err, results){
         if(err){
             return resp.error(err);
         }

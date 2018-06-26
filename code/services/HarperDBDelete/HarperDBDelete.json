@@ -1,13 +1,15 @@
 {
     "auto_restart": false,
     "concurrency": 0,
-    "current_version": 1,
-    "dependencies": "log,HarperDBInitialization",
+    "current_version": 2,
+    "dependencies": "log,HarperDB",
     "execution_timeout": 0,
     "logging_enabled": "false",
     "name": "HarperDBDelete",
     "params": [
-        "{}"
+        "schema",
+        "table",
+        "hash_values"
     ],
     "permissions": {},
     "run_user": "",

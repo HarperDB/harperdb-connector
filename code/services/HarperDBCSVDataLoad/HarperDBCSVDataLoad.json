@@ -2,14 +2,16 @@
     "auto_restart": false,
     "concurrency": 0,
     "current_version": 1,
-    "dependencies": "log,HarperDBInitialization",
+    "dependencies": "log,HarperDB",
     "execution_timeout": 0,
     "logging_enabled": "false",
-    "name": "HarperDBDelete",
+    "name": "HarperDBCSVDataLoad",
     "params": [
-        "{}"
+        "schema",
+        "table",
+        "data"
     ],
     "permissions": {},
     "run_user": "",
-    "source": "HarperDBDelete.js"
+    "source": "HarperDBCSVDataLoad.js"
 }

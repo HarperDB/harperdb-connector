@@ -26,8 +26,8 @@
  *  ]
  */
 function HarperDBSearchByValue(req, resp) {
-    const harperdb = HarperDBInitialization();
-    harperdb.searchByValue(req.params.body.schema, req.params.body.table, req.params.body.search_attribute, req.params.body.search_value, req.params.body.attributes, (err, results)=>{
+    const harperdb = HarperDB();
+    harperdb.searchByValue(req.params.schema, req.params.table, req.params.search_attribute, req.params.search_value, req.params.attributes, function(err, results){
         if(err){
             return resp.error(err);
         }

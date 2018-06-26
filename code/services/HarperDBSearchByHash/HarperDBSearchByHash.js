@@ -34,8 +34,8 @@
  *  ]
  */
 function HarperDBSearchByHash(req, resp) {
-    const harperdb = HarperDBInitialization();
-    harperdb.searchByHash(req.params.body.schema, req.params.body.table, req.params.body.hashes, req.params.body.attributes, (err, results)=>{
+    const harperdb = HarperDB();
+    harperdb.searchByHash(req.params.schema, req.params.table, req.params.hashes, req.params.attributes, function(err, results){
         if(err){
             return resp.error(err);
         }

@@ -1,13 +1,15 @@
 {
     "auto_restart": false,
     "concurrency": 0,
-    "current_version": 1,
-    "dependencies": "log,HarperDBInitialization",
+    "current_version": 3,
+    "dependencies": "log,HarperDB",
     "execution_timeout": 0,
     "logging_enabled": "false",
     "name": "HarperDBCreateTable",
     "params": [
-        "{}"
+        "schema",
+        "table",
+        "hash_attribute"
     ],
     "permissions": {},
     "run_user": "",

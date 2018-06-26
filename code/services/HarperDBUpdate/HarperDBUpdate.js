@@ -26,8 +26,8 @@
 }
  */
 function HarperDBUpdate(req, resp) {
-    const harperdb = HarperDBInitialization();
-    harperdb.update(req.params.body.schema, req.params.body.table, req.params.records, (err, results)=>{
+    const harperdb = HarperDB();
+    harperdb.update(req.params.schema, req.params.table, req.params.records, function(err, results){
         if(err){
             return resp.error(err);
         }

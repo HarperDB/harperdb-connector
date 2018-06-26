@@ -16,8 +16,8 @@
  }
  */
 function HarperDBCSVDataLoad(req, resp) {
-    const harperdb = HarperDBInitialization();
-    harperdb.csvDataLoad(req.params.body.schema, req.params.body.table, req.params.data, (err, results)=>{
+    const harperdb = HarperDB();
+    harperdb.csvDataLoad(req.params.schema, req.params.table, req.params.data, function(err, results){
         if(err){
             return resp.error(err);
         }

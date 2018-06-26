@@ -15,8 +15,8 @@
 *  }
  */
 function HarperDBCreateTable(req, resp) {
-    const harperdb = HarperDBInitialization();
-    harperdb.createTable(req.params.body.schema, req.params.body.table, (err, results)=>{
+    const harperdb = HarperDB();
+    harperdb.createTable(req.params.schema, req.params.table, req.params.hash_attribute, function(err, results){
         if(err){
             return resp.error(err);
         }

@@ -16,8 +16,8 @@
     }
  */
 function HarperDBDelete(req, resp) {
-    const harperdb = HarperDBInitialization();
-    harperdb.delete(req.params.body.schema, req.params.body.table, req.params.hash_values, (err, results)=>{
+    const harperdb = HarperDB();
+    harperdb.delete(req.params.schema, req.params.table, req.params.hash_values, function(err, results){
         if(err){
             return resp.error(err);
         }
