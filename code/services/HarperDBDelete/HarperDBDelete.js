@@ -1,9 +1,9 @@
 /**
  * Deletes data by hash (primary key) in HarperDB
- * @param {Object} body
+ * @param {Object} params
  * @example
  *
- * req.params.body = {
+ * req.params = {
  *      "schema":"dev",
  *      "table":"dog",
  *      "hash_values":[ 5,8]

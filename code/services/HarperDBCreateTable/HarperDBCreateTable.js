@@ -1,6 +1,6 @@
 /**
  * Creates a new table in an existing schema in HarperDB
- * @param {Object} body
+ * @param {Object} params
  * @example
  *
  * req.params.body = {

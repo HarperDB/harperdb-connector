@@ -1,9 +1,9 @@
 /**
  * Returns an object array based on a search by hash (primary key)
- * @param {Object} body
+ * @param {Object} params
  * @example
  *
- * req.params.body = {
+ * req.params = {
  *      "schema":"dev",
  *      "table":"dog",
  *      "hash_values":[1,3],

@@ -1,6 +1,12 @@
 /**
  * Creates a new schema in HarperDB
- * @param {string} schema Name of schema to create
+ * @param {string} params
+ * @example
+ *
+ * req.params = {
+ *      "schema":"dev"
+ *  };
+ *
  *  @returns {Object}
  *  {
     "message": "schema dev successfully created"

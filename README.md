@@ -2,7 +2,8 @@
 
 ## Overview
 
-HarperDB is a database that optimizes the data value chain for any size company without sacrificing features, functionality and stability.  HarperDB is designed with a small footprint that enables an enterprise class database to run on the edge and scale to servers in the cloud.  HarperDB was founded in Denver, CO with the belief that database architecture can be simple and accessible to everyone. 
+HarperDB is a database that optimizes the data value chain for any size company without sacrificing features, functionality and stability.  HarperDB is designed with a small footprint that enables an enterprise class database to run on the edge and scale to servers in the cloud.  HarperDB was founded in Denver, CO with the belief that database architecture can be simple and accessible to everyone.
+To learn more about HarperDB and it's features check out our [documentation](https://docs.harperdb.io/).
 
 This is an ipm package, which contains one or more reusable assets within the ipm Community. The 'package.json' in this repo is a ipm spec's package.json, [here](https://docs.clearblade.com/v/3/6-ipm/spec), which is a superset of npm's package.json spec, [here](https://docs.npmjs.com/files/package.json).
 
@@ -10,12 +11,24 @@ This is an ipm package, which contains one or more reusable assets within the ip
 
 ## Setup
 
-_Add any setup instructions_
-_Ex:  API Keys, or a setup Code Service to run, library constants to set_
+_Open the configuration file: HarperDBConfiguration.js and change the end_point, username & password to reflect your HarperDB configuration:_
+* end_point: the full url, including port, that your instance of HarperDB resides on. i.e. http://192.168.0.4:9925 
+* username: The username you wish to use to connect to HarperDB
+* password: The password of the username connecting to HarperDB
 
 ## Usage
+_HarperDB was designed to be simple and flexible offloading the complexity of databases from the developer.  
+To view a quick guide to working with HarperDB and understand the basic concepts please explore our [Getting Started Example](https://examples.harperdb.io/)_
 
-_Include example code for the entry point for your package, and any other instructions on how it should be used_
+_A typical flow for working with HarperDB is the following:_
+* Create a schema. Schemas are the starting point for a data model in HarperDB. Schemas are essentially a namespace that tables reside under.  
+    A schema is created by calling the HarperDBCreateSchema service
+* Create a table.  Tables reside under schemas and hold each object / row of data.  Create a table by calling the HarperDBCreateTable service
+* Insert Data.  HarperDB can insert both structured and unstructured data.  You can insert data via NoSQL with the HarperDBInsert Service and/or perform SQL INSERT with the HarperDBSQL Service.
+* Update Data. HarperDB can update both structured and unstructured data.  You can update data via NoSQL with the HarperDBUpdate Service and/or perform SQL UPDATE with the HarperDBSQL Service.
+* Query data by Hash (Primary Key). You can retrieve your data via a NoSQL search by hash function that returns data based on their hash value.  Search By Hash with the HarperDBSearchByHash service.
+* Query data by value.  Leveraging HarperDB's fully indexed data model you can search by value on any attribute in your data model.  Search by Value with the HarperDBSearchByVale service.
+* Query with SQL.  HarperDB has a robust SQL engine that allows you to perform full CRUD via SQL as well as perform aggregates, joins, conditions, etc... with the HarperDBSQL service.
 
 ## Assets
 
@@ -36,28 +49,27 @@ _Recommend using JSDoc for documenting your JavaScript code, and using jsdoc2md 
 npm install -g jsdoc-to-markdown
 jsdoc2md code/*/*/*.js >> Readme.md
 ```
+
 ## Classes
 
 <dl>
 <dt><a href="#HarperDB">HarperDB</a></dt>
-<dd></dd>
-<dt><a href="#HarperDBInitialization">HarperDBInitialization</a></dt>
 <dd></dd>
 </dl>
 
 ## Functions
 
 <dl>
-<dt><a href="#HarperDBCSVDataLoad">HarperDBCSVDataLoad(body)</a> ⇒ <code>Object</code></dt>
+<dt><a href="#HarperDBCSVDataLoad">HarperDBCSVDataLoad(params)</a> ⇒ <code>Object</code></dt>
 <dd><p>Deletes data by hash (primary key) in HarperDB</p>
 </dd>
-<dt><a href="#CreateSchema">CreateSchema(body)</a> ⇒ <code>Object</code></dt>
+<dt><a href="#HarperDBCreateSchema">HarperDBCreateSchema(params)</a> ⇒ <code>Object</code></dt>
 <dd><p>Creates a new schema in HarperDB</p>
 </dd>
-<dt><a href="#HarperDBCreateTable">HarperDBCreateTable(body)</a> ⇒ <code>Object</code></dt>
+<dt><a href="#HarperDBCreateTable">HarperDBCreateTable(params)</a> ⇒ <code>Object</code></dt>
 <dd><p>Creates a new table in an existing schema in HarperDB</p>
 </dd>
-<dt><a href="#HarperDBDelete">HarperDBDelete(body)</a> ⇒ <code>Object</code></dt>
+<dt><a href="#HarperDBDelete">HarperDBDelete(params)</a> ⇒ <code>Object</code></dt>
 <dd><p>Deletes data by hash (primary key) in HarperDB</p>
 </dd>
 <dt><a href="#HarperDBDescribeAll">HarperDBDescribeAll()</a> ⇒ <code>Array.&lt;Object&gt;</code></dt>
@@ -66,22 +78,22 @@ jsdoc2md code/*/*/*.js >> Readme.md
 <dt><a href="#HarperDBDescribeSchema">HarperDBDescribeSchema()</a> ⇒ <code>Array.&lt;Object&gt;</code></dt>
 <dd><p>Updates JSON data in an existing schema in HarperDB</p>
 <ul>
-<li>@param {Object} body</li>
+<li>@param {Object} params</li>
 </ul>
 </dd>
-<dt><a href="#HarperDBInsert">HarperDBInsert(body)</a> ⇒ <code>Object</code></dt>
+<dt><a href="#HarperDBInsert">HarperDBInsert(params)</a> ⇒ <code>Object</code></dt>
 <dd><p>Inserts JSON data into an existing schema in HarperDB</p>
 </dd>
-<dt><a href="#HarperDBSQL">HarperDBSQL(body)</a> ⇒ <code>Object</code> | <code>Array.&lt;Object&gt;</code></dt>
+<dt><a href="#HarperDBSQL">HarperDBSQL(params)</a> ⇒ <code>Object</code> | <code>Array.&lt;Object&gt;</code></dt>
 <dd><p>Returns an object array based on a search by hash (primary key)</p>
 </dd>
-<dt><a href="#HarperDBSearchByHash">HarperDBSearchByHash(body)</a> ⇒ <code>Array.&lt;Object&gt;</code></dt>
+<dt><a href="#HarperDBSearchByHash">HarperDBSearchByHash(params)</a> ⇒ <code>Array.&lt;Object&gt;</code></dt>
 <dd><p>Returns an object array based on a search by hash (primary key)</p>
 </dd>
-<dt><a href="#HarperDBSearchByValue">HarperDBSearchByValue(body)</a> ⇒ <code>Array.&lt;Object&gt;</code></dt>
+<dt><a href="#HarperDBSearchByValue">HarperDBSearchByValue(params)</a> ⇒ <code>Array.&lt;Object&gt;</code></dt>
 <dd><p>Returns an object array based on a search by hash (primary key)</p>
 </dd>
-<dt><a href="#HarperDBUpdate">HarperDBUpdate(body)</a> ⇒ <code>Object</code></dt>
+<dt><a href="#HarperDBUpdate">HarperDBUpdate(params)</a> ⇒ <code>Object</code></dt>
 <dd><p>Updates JSON data in an existing schema in HarperDB</p>
 </dd>
 </dl>
@@ -92,9 +104,9 @@ jsdoc2md code/*/*/*.js >> Readme.md
 **Kind**: global class  
 
 * [HarperDB](#HarperDB)
-    * [new HarperDB(username, password, end_point)](#new_HarperDB_new)
+    * [new HarperDB()](#new_HarperDB_new)
     * [~createSchema(schema, callback)](#HarperDB..createSchema) ⇒ <code>Object</code>
-    * [~createTable(schema, table, callback)](#HarperDB..createTable) ⇒ <code>Object</code>
+    * [~createTable(schema, table, hash_attribute, callback)](#HarperDB..createTable) ⇒ <code>Object</code>
     * [~insert(schema, table, records, callback)](#HarperDB..insert) ⇒ <code>Object</code>
     * [~update(schema, table, records, callback)](#HarperDB..update) ⇒ <code>Object</code>
     * [~deleter(schema, table, ids, callback)](#HarperDB..deleter) ⇒ <code>Object</code>
@@ -109,15 +121,8 @@ jsdoc2md code/*/*/*.js >> Readme.md
 
 <a name="new_HarperDB_new"></a>
 
-### new HarperDB(username, password, end_point)
-HarperDB library for interating with HarperDB
-
-
-| Param | Type | Description |
-| --- | --- | --- |
-| username | <code>string</code> | Username used to authenticate against HarperDB |
-| password | <code>string</code> | Password used to authenticate against HarperDB |
-| end_point | <code>string</code> | Endpoint used to connect to an instance of HarperDB i.e. http://127.0.0.1:9925 |
+### new HarperDB()
+Library for interating with HarperDB
 
 <a name="HarperDB..createSchema"></a>
 
@@ -139,7 +144,7 @@ Create a schema
 ```
 <a name="HarperDB..createTable"></a>
 
-### HarperDB~createTable(schema, table, callback) ⇒ <code>Object</code>
+### HarperDB~createTable(schema, table, hash_attribute, callback) ⇒ <code>Object</code>
 Create a table
 
 **Kind**: inner method of [<code>HarperDB</code>](#HarperDB)  
@@ -148,6 +153,7 @@ Create a table
 | --- | --- | --- |
 | schema | <code>string</code> | Name of schema which the table will be added to |
 | table | <code>string</code> | Name of the new Table to create |
+| hash_attribute | <code>string</code> | Name of the hash attribute (primary key) that will be the unique identifier for each row |
 | callback |  |  |
 
 **Example**  
@@ -572,29 +578,20 @@ Perform the request to HarperDB
 | body | <code>Object</code> | 
 | callback |  | 
 
-<a name="HarperDBInitialization"></a>
-
-## HarperDBInitialization
-**Kind**: global class  
-<a name="new_HarperDBInitialization_new"></a>
-
-### new HarperDBInitialization()
-Initializes the HarperDB Connector with end_point, username & password.  Returns the accessor functions to interact with HarperDB
-
 <a name="HarperDBCSVDataLoad"></a>
 
-## HarperDBCSVDataLoad(body) ⇒ <code>Object</code>
+## HarperDBCSVDataLoad(params) ⇒ <code>Object</code>
 Deletes data by hash (primary key) in HarperDB
 
 **Kind**: global function  
 
 | Param | Type |
 | --- | --- |
-| body | <code>string</code> | 
+| params | <code>string</code> | 
 
 **Example**  
 ```js
-req.params.body = {
+req.params = {
   "schema":"dev",
   "table":"breed",
   "data":"id,name,section,country,image\n1,ENGLISH POINTER,British and Irish Pointers and Setters,GREAT BRITAIN,http://www.fci.be/Nomenclature/Illustrations/001g07.jpg\n2,ENGLISH SETTER,British and Irish Pointers and Setters,GREAT BRITAIN,http://www.fci.be/Nomenclature/Illustrations/002g07.jpg\n3,KERRY BLUE TERRIER,Large and medium sized Terriers,IRELAND,\n"
@@ -608,9 +605,9 @@ req.params.body = {
     "message": "successfully loaded 3 records"
  }
 ```
-<a name="CreateSchema"></a>
+<a name="HarperDBCreateSchema"></a>
 
-## CreateSchema(body) ⇒ <code>Object</code>
+## HarperDBCreateSchema(params) ⇒ <code>Object</code>
 Creates a new schema in HarperDB
 
 **Kind**: global function  
@@ -620,11 +617,11 @@ Creates a new schema in HarperDB
 
 | Param | Type |
 | --- | --- |
-| body | <code>Object</code> | 
+| params | <code>string</code> | 
 
 **Example**  
 ```js
-req.params.body = {
+req.params = {
      "schema":"dev"
  };
 
@@ -632,14 +629,14 @@ req.params.body = {
 ```
 <a name="HarperDBCreateTable"></a>
 
-## HarperDBCreateTable(body) ⇒ <code>Object</code>
+## HarperDBCreateTable(params) ⇒ <code>Object</code>
 Creates a new table in an existing schema in HarperDB
 
 **Kind**: global function  
 
 | Param | Type |
 | --- | --- |
-| body | <code>Object</code> | 
+| params | <code>Object</code> | 
 
 **Example**  
 ```js
@@ -658,18 +655,18 @@ req.params.body = {
 ```
 <a name="HarperDBDelete"></a>
 
-## HarperDBDelete(body) ⇒ <code>Object</code>
+## HarperDBDelete(params) ⇒ <code>Object</code>
 Deletes data by hash (primary key) in HarperDB
 
 **Kind**: global function  
 
 | Param | Type |
 | --- | --- |
-| body | <code>Object</code> | 
+| params | <code>Object</code> | 
 
 **Example**  
 ```js
-req.params.body = {
+req.params = {
      "schema":"dev",
      "table":"dog",
      "hash_values":[ 5,8]
@@ -756,12 +753,12 @@ Updates JSON data in an existing schema in HarperDB
 
 ## HarperDBDescribeSchema() ⇒ <code>Array.&lt;Object&gt;</code>
 Updates JSON data in an existing schema in HarperDB
-* @param {Object} body
+* @param {Object} params
 
 **Kind**: global function  
 **Example**  
 ```js
-req.params.body = {
+req.params = {
      "schema":"dev"
  };
 
@@ -832,18 +829,18 @@ req.params.body = {
 ```
 <a name="HarperDBInsert"></a>
 
-## HarperDBInsert(body) ⇒ <code>Object</code>
+## HarperDBInsert(params) ⇒ <code>Object</code>
 Inserts JSON data into an existing schema in HarperDB
 
 **Kind**: global function  
 
 | Param | Type |
 | --- | --- |
-| body | <code>Object</code> | 
+| params | <code>Object</code> | 
 
 **Example**  
 ```js
-req.params.body = {
+req.params = {
      "schema":"dev",
      "table":"dog",
      "records":[
@@ -954,18 +951,18 @@ req.params.body = {
 ```
 <a name="HarperDBSQL"></a>
 
-## HarperDBSQL(body) ⇒ <code>Object</code> \| <code>Array.&lt;Object&gt;</code>
+## HarperDBSQL(params) ⇒ <code>Object</code> \| <code>Array.&lt;Object&gt;</code>
 Returns an object array based on a search by hash (primary key)
 
 **Kind**: global function  
 
 | Param | Type |
 | --- | --- |
-| body | <code>Object</code> | 
+| params | <code>Object</code> | 
 
 **Example**  
 ```js
-req.params.body = {
+req.params = {
      "sql":"SELECT * FROM dev.dog"
  };
 
@@ -985,18 +982,18 @@ req.params.body = {
 ```
 <a name="HarperDBSearchByHash"></a>
 
-## HarperDBSearchByHash(body) ⇒ <code>Array.&lt;Object&gt;</code>
+## HarperDBSearchByHash(params) ⇒ <code>Array.&lt;Object&gt;</code>
 Returns an object array based on a search by hash (primary key)
 
 **Kind**: global function  
 
 | Param | Type |
 | --- | --- |
-| body | <code>Object</code> | 
+| params | <code>Object</code> | 
 
 **Example**  
 ```js
-req.params.body = {
+req.params = {
      "schema":"dev",
      "table":"dog",
      "hash_values":[1,3],
@@ -1030,18 +1027,18 @@ req.params.body = {
 ```
 <a name="HarperDBSearchByValue"></a>
 
-## HarperDBSearchByValue(body) ⇒ <code>Array.&lt;Object&gt;</code>
+## HarperDBSearchByValue(params) ⇒ <code>Array.&lt;Object&gt;</code>
 Returns an object array based on a search by hash (primary key)
 
 **Kind**: global function  
 
 | Param | Type |
 | --- | --- |
-| body | <code>Object</code> | 
+| params | <code>Object</code> | 
 
 **Example**  
 ```js
-req.params.body = {
+req.params = {
      "schema":"dev",
      "table":"dog",
      "search_attribute":"dog_name",
@@ -1067,18 +1064,18 @@ req.params.body = {
 ```
 <a name="HarperDBUpdate"></a>
 
-## HarperDBUpdate(body) ⇒ <code>Object</code>
+## HarperDBUpdate(params) ⇒ <code>Object</code>
 Updates JSON data in an existing schema in HarperDB
 
 **Kind**: global function  
 
 | Param | Type |
 | --- | --- |
-| body | <code>Object</code> | 
+| params | <code>Object</code> | 
 
 **Example**  
 ```js
-req.params.body = {
+req.params = {
      "schema":"dev",
      "table":"dog",
      "records":[

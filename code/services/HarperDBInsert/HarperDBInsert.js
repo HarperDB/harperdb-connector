@@ -1,9 +1,9 @@
 /**
  * Inserts JSON data into an existing schema in HarperDB
- * @param {Object} body
+ * @param {Object} params
  * @example
  *
- * req.params.body = {
+ * req.params = {
  *      "schema":"dev",
  *      "table":"dog",
  *      "records":[
