@@ -1,6 +1,10 @@
 /**
  * Returns an object array based on a search by hash (primary key)
- * @param {Object} params
+ * @param {string} schema Schema the table resides under
+ * @param {string} table Table where the data will be queried
+ * @param {string[] | number[]} hash_values Array of hash values (primary key values) that will be deleted
+ * @param {string[]} get_attributes (optional) String array of attribute names that will be returned in the results
+ * @param {string} [end_point] HarperDB end point to connect to (defaults to the end_point setting in HarperDBConfiguration)
  * @example
  *
  * req.params = {
@@ -34,7 +38,7 @@
  *  ]
  */
 function HarperDBSearchByHash(req, resp) {
-    const harperdb = HarperDB();
+    var harperdb = HarperDB(req.params.end_point);
     harperdb.searchByHash(req.params.schema, req.params.table, req.params.hashes, req.params.attributes, function(err, results){
         if(err){
             return resp.error(err);

@@ -1,7 +1,7 @@
 {
     "auto_restart": false,
     "concurrency": 0,
-    "current_version": 3,
+    "current_version": 9,
     "dependencies": "log,HarperDB",
     "execution_timeout": 0,
     "logging_enabled": "false",
@@ -9,7 +9,8 @@
     "params": [
         "schema",
         "table",
-        "hash_attribute"
+        "hash_attribute",
+        "end_point"
     ],
     "permissions": {},
     "run_user": "",

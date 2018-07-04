@@ -1,6 +1,9 @@
 /**
- * Updates JSON data in an existing schema in HarperDB
- * @param {Object} params
+ * Updates data in an existing table in HarperDB
+ * @param {string} schema Schema the table resides under
+ * @param {string} table Table where data will be updated
+ * @param {Object[]} records Object array of records
+ * @param {string} [end_point] HarperDB end point to connect to (defaults to the end_point setting in HarperDBConfiguration)
  * @example
  *
  * req.params = {
@@ -26,7 +29,7 @@
 }
  */
 function HarperDBUpdate(req, resp) {
-    const harperdb = HarperDB();
+    var harperdb = HarperDB(req.params.end_point);
     harperdb.update(req.params.schema, req.params.table, req.params.records, function(err, results){
         if(err){
             return resp.error(err);

@@ -1,6 +1,7 @@
 /**
- * Updates JSON data in an existing schema in HarperDB
- * * @param {Object} params
+ * Returns the schema/table/attribute meta data for a schema
+ * @param {schema} schema Name of schema to return meta-data
+ * @param {string} [end_point] HarperDB end point to connect to (defaults to the end_point setting in HarperDBConfiguration)
  * @example
  *
  * req.params = {
@@ -71,7 +72,7 @@
  ]
  */
 function HarperDBDescribeSchema(req, resp) {
-    const harperdb = HarperDB();
+    var harperdb = HarperDB(req.params.end_point);
     harperdb.describeSchema(req.params.schema, function(err, results){
         if(err){
             return resp.error(err);

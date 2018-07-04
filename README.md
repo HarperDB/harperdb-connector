@@ -49,7 +49,6 @@ _Recommend using JSDoc for documenting your JavaScript code, and using jsdoc2md 
 npm install -g jsdoc-to-markdown
 jsdoc2md code/*/*/*.js >> Readme.md
 ```
-
 ## Classes
 
 <dl>
@@ -60,41 +59,38 @@ jsdoc2md code/*/*/*.js >> Readme.md
 ## Functions
 
 <dl>
-<dt><a href="#HarperDBCSVDataLoad">HarperDBCSVDataLoad(params)</a> ⇒ <code>Object</code></dt>
+<dt><a href="#HarperDBCSVDataLoad">HarperDBCSVDataLoad(schema, table, data, [end_point])</a> ⇒ <code>Object</code></dt>
 <dd><p>Deletes data by hash (primary key) in HarperDB</p>
 </dd>
-<dt><a href="#HarperDBCreateSchema">HarperDBCreateSchema(params)</a> ⇒ <code>Object</code></dt>
+<dt><a href="#HarperDBCreateSchema">HarperDBCreateSchema(schema, [end_point])</a> ⇒ <code>Object</code></dt>
 <dd><p>Creates a new schema in HarperDB</p>
 </dd>
-<dt><a href="#HarperDBCreateTable">HarperDBCreateTable(params)</a> ⇒ <code>Object</code></dt>
+<dt><a href="#HarperDBCreateTable">HarperDBCreateTable(schema, table, hash_attribute, [end_point])</a> ⇒ <code>Object</code></dt>
 <dd><p>Creates a new table in an existing schema in HarperDB</p>
 </dd>
-<dt><a href="#HarperDBDelete">HarperDBDelete(params)</a> ⇒ <code>Object</code></dt>
+<dt><a href="#HarperDBDelete">HarperDBDelete(schema, table, ids, [end_point])</a> ⇒ <code>Object</code></dt>
 <dd><p>Deletes data by hash (primary key) in HarperDB</p>
 </dd>
-<dt><a href="#HarperDBDescribeAll">HarperDBDescribeAll()</a> ⇒ <code>Array.&lt;Object&gt;</code></dt>
-<dd><p>Updates JSON data in an existing schema in HarperDB</p>
+<dt><a href="#HarperDBDescribeAll">HarperDBDescribeAll([end_point])</a> ⇒ <code>Array.&lt;Object&gt;</code></dt>
+<dd><p>Returns the schema/table/attribute meta data for all schemas</p>
 </dd>
-<dt><a href="#HarperDBDescribeSchema">HarperDBDescribeSchema()</a> ⇒ <code>Array.&lt;Object&gt;</code></dt>
-<dd><p>Updates JSON data in an existing schema in HarperDB</p>
-<ul>
-<li>@param {Object} params</li>
-</ul>
+<dt><a href="#HarperDBDescribeSchema">HarperDBDescribeSchema(schema, [end_point])</a> ⇒ <code>Array.&lt;Object&gt;</code></dt>
+<dd><p>Returns the schema/table/attribute meta data for a schema</p>
 </dd>
-<dt><a href="#HarperDBInsert">HarperDBInsert(params)</a> ⇒ <code>Object</code></dt>
-<dd><p>Inserts JSON data into an existing schema in HarperDB</p>
+<dt><a href="#HarperDBInsert">HarperDBInsert(schema, table, records, [end_point])</a> ⇒ <code>Object</code></dt>
+<dd><p>Inserts JSON data into an existing table in HarperDB</p>
 </dd>
-<dt><a href="#HarperDBSQL">HarperDBSQL(params)</a> ⇒ <code>Object</code> | <code>Array.&lt;Object&gt;</code></dt>
+<dt><a href="#HarperDBSQL">HarperDBSQL(sql, [end_point])</a> ⇒ <code>Object</code> | <code>Array.&lt;Object&gt;</code></dt>
+<dd><p>Run SQL (INSERT / UPDATE / DELETE / SELECT)</p>
+</dd>
+<dt><a href="#HarperDBSearchByHash">HarperDBSearchByHash(schema, table, hash_values, get_attributes, [end_point])</a> ⇒ <code>Array.&lt;Object&gt;</code></dt>
 <dd><p>Returns an object array based on a search by hash (primary key)</p>
 </dd>
-<dt><a href="#HarperDBSearchByHash">HarperDBSearchByHash(params)</a> ⇒ <code>Array.&lt;Object&gt;</code></dt>
-<dd><p>Returns an object array based on a search by hash (primary key)</p>
+<dt><a href="#HarperDBSearchByValue">HarperDBSearchByValue(schema, table, search_attribute, search_value, get_attributes)</a> ⇒ <code>Array.&lt;Object&gt;</code></dt>
+<dd><p>Search by value on an attribute</p>
 </dd>
-<dt><a href="#HarperDBSearchByValue">HarperDBSearchByValue(params)</a> ⇒ <code>Array.&lt;Object&gt;</code></dt>
-<dd><p>Returns an object array based on a search by hash (primary key)</p>
-</dd>
-<dt><a href="#HarperDBUpdate">HarperDBUpdate(params)</a> ⇒ <code>Object</code></dt>
-<dd><p>Updates JSON data in an existing schema in HarperDB</p>
+<dt><a href="#HarperDBUpdate">HarperDBUpdate(schema, table, records, [end_point])</a> ⇒ <code>Object</code></dt>
+<dd><p>Updates data in an existing table in HarperDB</p>
 </dd>
 </dl>
 
@@ -110,11 +106,11 @@ jsdoc2md code/*/*/*.js >> Readme.md
     * [~insert(schema, table, records, callback)](#HarperDB..insert) ⇒ <code>Object</code>
     * [~update(schema, table, records, callback)](#HarperDB..update) ⇒ <code>Object</code>
     * [~deleter(schema, table, ids, callback)](#HarperDB..deleter) ⇒ <code>Object</code>
-    * [~searchByHash(schema, table, ids, get_attributes, callback)](#HarperDB..searchByHash) ⇒ <code>Array.&lt;Object&gt;</code>
+    * [~searchByHash(schema, table, hash_values, get_attributes, callback)](#HarperDB..searchByHash) ⇒ <code>Array.&lt;Object&gt;</code>
     * [~searchByValue(schema, table, search_attribute, search_value, get_attributes, callback)](#HarperDB..searchByValue) ⇒ <code>Array.&lt;Object&gt;</code>
     * [~sql(sql, callback)](#HarperDB..sql) ⇒ <code>Array.&lt;Object&gt;</code>
     * [~describeAll(callback)](#HarperDB..describeAll) ⇒ <code>Array.&lt;Object&gt;</code>
-    * [~describeSchema(callback)](#HarperDB..describeSchema) ⇒ <code>Array.&lt;Object&gt;</code>
+    * [~describeSchema(schema, callback)](#HarperDB..describeSchema) ⇒ <code>Array.&lt;Object&gt;</code>
     * [~csvDataLoad(schema, table, data, callback)](#HarperDB..csvDataLoad) ⇒ <code>Object</code>
     * [~executeOperation(json, callback)](#HarperDB..executeOperation) ⇒ <code>Object</code> \| <code>Array.&lt;Object&gt;</code>
     * [~executeRequest(body, callback)](#HarperDB..executeRequest) ⇒ <code>Object</code> \| <code>Array.&lt;Object&gt;</code>
@@ -262,7 +258,7 @@ Delete record(s)
 ```
 <a name="HarperDB..searchByHash"></a>
 
-### HarperDB~searchByHash(schema, table, ids, get_attributes, callback) ⇒ <code>Array.&lt;Object&gt;</code>
+### HarperDB~searchByHash(schema, table, hash_values, get_attributes, callback) ⇒ <code>Array.&lt;Object&gt;</code>
 Search for records based on hash (primary key)
 
 **Kind**: inner method of [<code>HarperDB</code>](#HarperDB)  
@@ -271,7 +267,7 @@ Search for records based on hash (primary key)
 | --- | --- | --- |
 | schema | <code>string</code> | Schema the table resides under |
 | table | <code>string</code> | Table where the data will be queried |
-| ids | <code>Array.&lt;string&gt;</code> \| <code>Array.&lt;number&gt;</code> | Array of hash values (primary key values) that will be deleted |
+| hash_values | <code>Array.&lt;string&gt;</code> \| <code>Array.&lt;number&gt;</code> | Array of hash values (primary key values) that will be deleted |
 | get_attributes | <code>Array.&lt;string&gt;</code> | (optional) String array of attribute names that will be returned in the results |
 | callback |  |  |
 
@@ -439,14 +435,15 @@ Returns the schema/table/attribute meta data for all schemas
 ```
 <a name="HarperDB..describeSchema"></a>
 
-### HarperDB~describeSchema(callback) ⇒ <code>Array.&lt;Object&gt;</code>
+### HarperDB~describeSchema(schema, callback) ⇒ <code>Array.&lt;Object&gt;</code>
 Returns the schema/table/attribute meta data for a schema
 
 **Kind**: inner method of [<code>HarperDB</code>](#HarperDB)  
 
-| Param |
-| --- |
-| callback | 
+| Param | Type | Description |
+| --- | --- | --- |
+| schema | <code>schema</code> | Name of schema to return meta-data |
+| callback |  |  |
 
 **Example**  
 ```js
@@ -580,14 +577,17 @@ Perform the request to HarperDB
 
 <a name="HarperDBCSVDataLoad"></a>
 
-## HarperDBCSVDataLoad(params) ⇒ <code>Object</code>
+## HarperDBCSVDataLoad(schema, table, data, [end_point]) ⇒ <code>Object</code>
 Deletes data by hash (primary key) in HarperDB
 
 **Kind**: global function  
 
-| Param | Type |
-| --- | --- |
-| params | <code>string</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| schema | <code>string</code> | Schema the table resides under |
+| table | <code>string</code> | Table the csv data is loading into |
+| data | <code>string</code> | CSV formatted |
+| [end_point] | <code>string</code> | HarperDB end point to connect to (defaults to the end_point setting in HarperDBConfiguration) |
 
 **Example**  
 ```js
@@ -607,7 +607,7 @@ req.params = {
 ```
 <a name="HarperDBCreateSchema"></a>
 
-## HarperDBCreateSchema(params) ⇒ <code>Object</code>
+## HarperDBCreateSchema(schema, [end_point]) ⇒ <code>Object</code>
 Creates a new schema in HarperDB
 
 **Kind**: global function  
@@ -615,9 +615,10 @@ Creates a new schema in HarperDB
     "message": "schema dev successfully created"
     }  
 
-| Param | Type |
-| --- | --- |
-| params | <code>string</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| schema | <code>string</code> | Name of new schema to create |
+| [end_point] | <code>string</code> | HarperDB end point to connect to (defaults to the end_point setting in HarperDBConfiguration) |
 
 **Example**  
 ```js
@@ -629,20 +630,24 @@ req.params = {
 ```
 <a name="HarperDBCreateTable"></a>
 
-## HarperDBCreateTable(params) ⇒ <code>Object</code>
+## HarperDBCreateTable(schema, table, hash_attribute, [end_point]) ⇒ <code>Object</code>
 Creates a new table in an existing schema in HarperDB
 
 **Kind**: global function  
 
-| Param | Type |
-| --- | --- |
-| params | <code>Object</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| schema | <code>string</code> | Name of schema to create table under |
+| table | <code>string</code> | Name of the new Table to create |
+| hash_attribute | <code>string</code> | Name of the hash attribute (primary key) that will be the unique identifier for each row |
+| [end_point] | <code>string</code> | HarperDB end point to connect to (defaults to the end_point setting in HarperDBConfiguration) |
 
 **Example**  
 ```js
 req.params.body = {
      "schema":"dev",
-     "table":"dog"
+     "table":"dog",
+     "hash_attribute": "id"
  };
 
  
@@ -655,14 +660,17 @@ req.params.body = {
 ```
 <a name="HarperDBDelete"></a>
 
-## HarperDBDelete(params) ⇒ <code>Object</code>
+## HarperDBDelete(schema, table, ids, [end_point]) ⇒ <code>Object</code>
 Deletes data by hash (primary key) in HarperDB
 
 **Kind**: global function  
 
-| Param | Type |
-| --- | --- |
-| params | <code>Object</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| schema | <code>string</code> | Schema the table resides under |
+| table | <code>string</code> | Table where data will be deleted |
+| ids | <code>Array.&lt;string&gt;</code> \| <code>Array.&lt;number&gt;</code> | Array of hash values (primary keys) that will be deleted |
+| [end_point] | <code>string</code> | HarperDB end point to connect to (defaults to the end_point setting in HarperDBConfiguration) |
 
 **Example**  
 ```js
@@ -682,10 +690,15 @@ req.params = {
 ```
 <a name="HarperDBDescribeAll"></a>
 
-## HarperDBDescribeAll() ⇒ <code>Array.&lt;Object&gt;</code>
-Updates JSON data in an existing schema in HarperDB
+## HarperDBDescribeAll([end_point]) ⇒ <code>Array.&lt;Object&gt;</code>
+Returns the schema/table/attribute meta data for all schemas
 
 **Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [end_point] | <code>string</code> | HarperDB end point to connect to (defaults to the end_point setting in HarperDBConfiguration) |
+
 **Example**  
 ```js
 [
@@ -751,11 +764,16 @@ Updates JSON data in an existing schema in HarperDB
 ```
 <a name="HarperDBDescribeSchema"></a>
 
-## HarperDBDescribeSchema() ⇒ <code>Array.&lt;Object&gt;</code>
-Updates JSON data in an existing schema in HarperDB
-* @param {Object} params
+## HarperDBDescribeSchema(schema, [end_point]) ⇒ <code>Array.&lt;Object&gt;</code>
+Returns the schema/table/attribute meta data for a schema
 
 **Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| schema | <code>schema</code> | Name of schema to return meta-data |
+| [end_point] | <code>string</code> | HarperDB end point to connect to (defaults to the end_point setting in HarperDBConfiguration) |
+
 **Example**  
 ```js
 req.params = {
@@ -829,14 +847,17 @@ req.params = {
 ```
 <a name="HarperDBInsert"></a>
 
-## HarperDBInsert(params) ⇒ <code>Object</code>
-Inserts JSON data into an existing schema in HarperDB
+## HarperDBInsert(schema, table, records, [end_point]) ⇒ <code>Object</code>
+Inserts JSON data into an existing table in HarperDB
 
 **Kind**: global function  
 
-| Param | Type |
-| --- | --- |
-| params | <code>Object</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| schema | <code>string</code> | Schema the table resides under |
+| table | <code>string</code> | Table where data will be inserted |
+| records | <code>Array.&lt;Object&gt;</code> | Object array of records |
+| [end_point] | <code>string</code> | HarperDB end point to connect to (defaults to the end_point setting in HarperDBConfiguration) |
 
 **Example**  
 ```js
@@ -951,14 +972,15 @@ req.params = {
 ```
 <a name="HarperDBSQL"></a>
 
-## HarperDBSQL(params) ⇒ <code>Object</code> \| <code>Array.&lt;Object&gt;</code>
-Returns an object array based on a search by hash (primary key)
+## HarperDBSQL(sql, [end_point]) ⇒ <code>Object</code> \| <code>Array.&lt;Object&gt;</code>
+Run SQL (INSERT / UPDATE / DELETE / SELECT)
 
 **Kind**: global function  
 
-| Param | Type |
-| --- | --- |
-| params | <code>Object</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| sql | <code>string</code> | SQL Statement to execute |
+| [end_point] | <code>string</code> | HarperDB end point to connect to (defaults to the end_point setting in HarperDBConfiguration) |
 
 **Example**  
 ```js
@@ -982,14 +1004,18 @@ req.params.body = {
 ```
 <a name="HarperDBSearchByHash"></a>
 
-## HarperDBSearchByHash(params) ⇒ <code>Array.&lt;Object&gt;</code>
+## HarperDBSearchByHash(schema, table, hash_values, get_attributes, [end_point]) ⇒ <code>Array.&lt;Object&gt;</code>
 Returns an object array based on a search by hash (primary key)
 
 **Kind**: global function  
 
-| Param | Type |
-| --- | --- |
-| params | <code>Object</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| schema | <code>string</code> | Schema the table resides under |
+| table | <code>string</code> | Table where the data will be queried |
+| hash_values | <code>Array.&lt;string&gt;</code> \| <code>Array.&lt;number&gt;</code> | Array of hash values (primary key values) that will be deleted |
+| get_attributes | <code>Array.&lt;string&gt;</code> | (optional) String array of attribute names that will be returned in the results |
+| [end_point] | <code>string</code> | HarperDB end point to connect to (defaults to the end_point setting in HarperDBConfiguration) |
 
 **Example**  
 ```js
@@ -1027,14 +1053,18 @@ req.params = {
 ```
 <a name="HarperDBSearchByValue"></a>
 
-## HarperDBSearchByValue(params) ⇒ <code>Array.&lt;Object&gt;</code>
-Returns an object array based on a search by hash (primary key)
+## HarperDBSearchByValue(schema, table, search_attribute, search_value, get_attributes) ⇒ <code>Array.&lt;Object&gt;</code>
+Search by value on an attribute
 
 **Kind**: global function  
 
-| Param | Type |
-| --- | --- |
-| params | <code>Object</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| schema | <code>string</code> | Schema the table resides under |
+| table | <code>string</code> | Table where the data will be queried |
+| search_attribute | <code>string</code> | Attribute upon which to perform the search |
+| search_value | <code>string</code> | Value that will be used in the search |
+| get_attributes | <code>Array.&lt;string&gt;</code> | (optional) String array of attribute names that will be returned in the results * @param {string} [end_point] HarperDB end point to connect to (defaults to the end_point setting in HarperDBConfiguration) |
 
 **Example**  
 ```js
@@ -1064,14 +1094,17 @@ req.params = {
 ```
 <a name="HarperDBUpdate"></a>
 
-## HarperDBUpdate(params) ⇒ <code>Object</code>
-Updates JSON data in an existing schema in HarperDB
+## HarperDBUpdate(schema, table, records, [end_point]) ⇒ <code>Object</code>
+Updates data in an existing table in HarperDB
 
 **Kind**: global function  
 
-| Param | Type |
-| --- | --- |
-| params | <code>Object</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| schema | <code>string</code> | Schema the table resides under |
+| table | <code>string</code> | Table where data will be updated |
+| records | <code>Array.&lt;Object&gt;</code> | Object array of records |
+| [end_point] | <code>string</code> | HarperDB end point to connect to (defaults to the end_point setting in HarperDBConfiguration) |
 
 **Example**  
 ```js

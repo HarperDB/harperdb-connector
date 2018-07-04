@@ -2,7 +2,8 @@
  * Library for interating with HarperDB
  * @constructor
  */
-function HarperDB(){
+function HarperDB(end_point){
+    const harperdb_end_point = end_point ? end_point : HarperDBConfiguration.end_point;
     var http = Requests();
 
     /**
@@ -155,7 +156,7 @@ function HarperDB(){
      * Search for records based on hash (primary key)
      * @param {string} schema Schema the table resides under
      * @param {string} table Table where the data will be queried
-     * @param {string[] | number[]} ids Array of hash values (primary key values) that will be deleted
+     * @param {string[] | number[]} hash_values Array of hash values (primary key values) that will be deleted
      * @param {string[]} get_attributes (optional) String array of attribute names that will be returned in the results
      * @param callback
      * @returns  {Object[]}
@@ -178,12 +179,12 @@ function HarperDB(){
      }
      ]
      */
-    function searchByHash(schema, table, ids, get_attributes, callback){
+    function searchByHash(schema, table, hash_values, get_attributes, callback){
         const body = {
             operation:"search_by_hash",
             schema: schema,
             table: table,
-            hash_values:ids,
+            hash_values:hash_values,
             get_attributes: get_attributes ? get_attributes : ["*"]
         };
 
@@ -340,6 +341,7 @@ function HarperDB(){
 
     /**
      * Returns the schema/table/attribute meta data for a schema
+     * @param {schema} schema Name of schema to return meta-data
      * @param callback
      * @returns  {Object[]}
      * @example
@@ -477,7 +479,7 @@ function HarperDB(){
      */
     function executeRequest(body, callback){
         var options = {
-            uri: HarperDBConfiguration.end_point,
+            uri: harperdb_end_point,
             body: body,
             headers:{
                 "Content-Type": "application/json"

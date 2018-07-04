@@ -1,6 +1,7 @@
 /**
- * Returns an object array based on a search by hash (primary key)
- * @param {Object} params
+ * Run SQL (INSERT / UPDATE / DELETE / SELECT)
+ * @param {string} sql SQL Statement to execute
+ * @param {string} [end_point] HarperDB end point to connect to (defaults to the end_point setting in HarperDBConfiguration)
  * @example
  *
  * req.params = {
@@ -22,7 +23,7 @@
  *  @returns {Object | Object[]}
  */
 function HarperDBSQL(req, resp) {
-    const harperdb = HarperDB();
+    var harperdb = HarperDB(req.params.end_point);
     harperdb.sql(req.params.sql, function(err, results){
         if(err){
             return resp.error(err);

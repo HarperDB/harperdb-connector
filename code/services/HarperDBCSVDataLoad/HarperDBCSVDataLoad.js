@@ -1,6 +1,9 @@
 /**
  * Deletes data by hash (primary key) in HarperDB
- * @param {string} params
+ * @param {string} schema Schema the table resides under
+ * @param {string} table Table the csv data is loading into
+ * @param {string} data CSV formatted
+ * @param {string} [end_point] HarperDB end point to connect to (defaults to the end_point setting in HarperDBConfiguration)
  * @example
  *
  * req.params = {
@@ -16,7 +19,7 @@
  }
  */
 function HarperDBCSVDataLoad(req, resp) {
-    const harperdb = HarperDB();
+    var harperdb = HarperDB(req.params.end_point);
     harperdb.csvDataLoad(req.params.schema, req.params.table, req.params.data, function(err, results){
         if(err){
             return resp.error(err);
