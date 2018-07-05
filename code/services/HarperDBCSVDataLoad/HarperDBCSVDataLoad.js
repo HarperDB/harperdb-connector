@@ -1,5 +1,5 @@
 /**
- * Deletes data by hash (primary key) in HarperDB
+ * Loads CSV formatted data into a HarperDB table
  * @param {string} schema Schema the table resides under
  * @param {string} table Table the csv data is loading into
  * @param {string} data CSV formatted

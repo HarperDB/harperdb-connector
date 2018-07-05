@@ -34,12 +34,23 @@ _A typical flow for working with HarperDB is the following:_
 
 ###
 
-- `HarperDBExample` - TODO desc
+- `HarperDBCreateSchema` - Creates a new schema in HarperDB
+- `HarperDBCreateTable` - Creates a new table in an existing schema in HarperDB
+- `HarperDBCSVDataLoad` - Loads CSV formatted data into a HarperDB table
+- `HarperDBDelete` - Deletes data by hash (primary key) in HarperDB
+- `HarperDBDescribeAll` - Returns the schema/table/attribute meta data for all schemas
+- `HarperDBDescribeSchema` - Returns the schema/table/attribute meta data for a schema
+- `HarperDBExecuteOperation` - Execute a raw HarperDB call
+- `HarperDBInsert` - Inserts JSON data into an existing table in HarperDB
+- `HarperDBSearchByHash` - Returns an object array based on a search by hash (primary key)
+- `HarperDBSearchByValue` - Returns an object array based on a search by value on an attribute
+- `HarperDBSQL` - Run SQL (INSERT / UPDATE / DELETE / SELECT)
+- `HarperDBUpdate` - Updates data in an existing table in HarperDB
 
 ### Libraries
 
-- `HarperDB` - TODO Add desc
-- `HarperDBConfiguration` - TODO Add desc
+- `HarperDB` - Library that executes core operations against HarperDB
+- `HarperDBConfiguration` - Configuration settings to connect to HarperDB
 
 ## API
 
@@ -60,7 +71,7 @@ jsdoc2md code/*/*/*.js >> Readme.md
 
 <dl>
 <dt><a href="#HarperDBCSVDataLoad">HarperDBCSVDataLoad(schema, table, data, [end_point])</a> ⇒ <code>Object</code></dt>
-<dd><p>Deletes data by hash (primary key) in HarperDB</p>
+<dd><p>Loads CSV formatted data into a HarperDB table</p>
 </dd>
 <dt><a href="#HarperDBCreateSchema">HarperDBCreateSchema(schema, [end_point])</a> ⇒ <code>Object</code></dt>
 <dd><p>Creates a new schema in HarperDB</p>
@@ -77,6 +88,9 @@ jsdoc2md code/*/*/*.js >> Readme.md
 <dt><a href="#HarperDBDescribeSchema">HarperDBDescribeSchema(schema, [end_point])</a> ⇒ <code>Array.&lt;Object&gt;</code></dt>
 <dd><p>Returns the schema/table/attribute meta data for a schema</p>
 </dd>
+<dt><a href="#HarperDBExecuteOperation">HarperDBExecuteOperation(body, [end_point])</a> ⇒ <code>Object</code> | <code>Array.&lt;Object&gt;</code></dt>
+<dd><p>Execute a raw HarperDB call</p>
+</dd>
 <dt><a href="#HarperDBInsert">HarperDBInsert(schema, table, records, [end_point])</a> ⇒ <code>Object</code></dt>
 <dd><p>Inserts JSON data into an existing table in HarperDB</p>
 </dd>
@@ -87,7 +101,7 @@ jsdoc2md code/*/*/*.js >> Readme.md
 <dd><p>Returns an object array based on a search by hash (primary key)</p>
 </dd>
 <dt><a href="#HarperDBSearchByValue">HarperDBSearchByValue(schema, table, search_attribute, search_value, get_attributes)</a> ⇒ <code>Array.&lt;Object&gt;</code></dt>
-<dd><p>Search by value on an attribute</p>
+<dd><p>Returns an object array based on a search by value on an attribute</p>
 </dd>
 <dt><a href="#HarperDBUpdate">HarperDBUpdate(schema, table, records, [end_point])</a> ⇒ <code>Object</code></dt>
 <dd><p>Updates data in an existing table in HarperDB</p>
@@ -578,7 +592,7 @@ Perform the request to HarperDB
 <a name="HarperDBCSVDataLoad"></a>
 
 ## HarperDBCSVDataLoad(schema, table, data, [end_point]) ⇒ <code>Object</code>
-Deletes data by hash (primary key) in HarperDB
+Loads CSV formatted data into a HarperDB table
 
 **Kind**: global function  
 
@@ -845,6 +859,44 @@ req.params = {
  }
  ]
 ```
+<a name="HarperDBExecuteOperation"></a>
+
+## HarperDBExecuteOperation(body, [end_point]) ⇒ <code>Object</code> \| <code>Array.&lt;Object&gt;</code>
+Execute a raw HarperDB call
+
+**Kind**: global function  
+**Returns**: <code>Object</code> \| <code>Array.&lt;Object&gt;</code> - - Return results vary based on operation executed  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| body | <code>Object</code> |  |
+| [end_point] | <code>string</code> | HarperDB end point to connect to (defaults to the end_point setting in HarperDBConfiguration) |
+
+**Example**  
+```js
+{
+        "operation":"insert",
+        "schema":"dev",
+        "table":"dog",
+        "records": [
+          {
+            "name":"Harper",
+            "breed":"Mutt",
+            "id":"1",
+            "age":5
+
+          },
+          {
+            "name":"Penny",
+            "breed":"Mutt",
+            "id":"3",
+            "age":5
+          }
+        ]
+        }
+
+ 
+```
 <a name="HarperDBInsert"></a>
 
 ## HarperDBInsert(schema, table, records, [end_point]) ⇒ <code>Object</code>
@@ -1054,7 +1106,7 @@ req.params = {
 <a name="HarperDBSearchByValue"></a>
 
 ## HarperDBSearchByValue(schema, table, search_attribute, search_value, get_attributes) ⇒ <code>Array.&lt;Object&gt;</code>
-Search by value on an attribute
+Returns an object array based on a search by value on an attribute
 
 **Kind**: global function  
 

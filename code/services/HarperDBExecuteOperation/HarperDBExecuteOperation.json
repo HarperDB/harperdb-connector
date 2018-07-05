@@ -1,19 +1,16 @@
 {
     "auto_restart": false,
     "concurrency": 0,
-    "current_version": 10,
+    "current_version": 3,
     "dependencies": "log,HarperDB",
     "execution_timeout": 0,
     "logging_enabled": "false",
-    "name": "HarperDBSearchByHash",
+    "name": "HarperDBCreateSchema",
     "params": [
-        "schema",
-        "table",
-        "hash_values",
-        "attributes",
+        "body",
         "end_point"
     ],
     "permissions": {},
     "run_user": "",
-    "source": "HarperDBSearchByHash.js"
+    "source": "HarperDBCreateSchema.js"
 }

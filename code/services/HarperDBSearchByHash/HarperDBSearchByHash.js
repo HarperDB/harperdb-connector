@@ -39,7 +39,7 @@
  */
 function HarperDBSearchByHash(req, resp) {
     var harperdb = HarperDB(req.params.end_point);
-    harperdb.searchByHash(req.params.schema, req.params.table, req.params.hashes, req.params.attributes, function(err, results){
+    harperdb.searchByHash(req.params.schema, req.params.table, req.params.hash_values, req.params.attributes, function(err, results){
         if(err){
             return resp.error(err);
         }

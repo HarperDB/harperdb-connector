@@ -1,5 +1,5 @@
 /**
- * Search by value on an attribute
+ * Returns an object array based on a search by value on an attribute
  * @param {string} schema Schema the table resides under
  * @param {string} table Table where the data will be queried
  * @param {string} search_attribute Attribute upon which to perform the search
