@@ -1,6 +1,7 @@
 /**
  * Library for interating with HarperDB
  * @constructor
+ * @param end_point the endpoint where the database exist
  */
 function HarperDB(end_point){
     const harperdb_end_point = end_point ? end_point : HarperDBConfiguration.end_point;
