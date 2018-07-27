@@ -1,0 +1,9 @@
+{
+    "auth": true,
+    "description": "",
+    "messaging_url": "platform.clearblade.com:1883",
+    "name": "harperdb",
+    "platform_url": "https://platform.clearblade.com",
+    "system_key": "",
+    "system_secret": ""
+}
